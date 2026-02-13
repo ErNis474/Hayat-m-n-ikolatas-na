@@ -1,9 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Test</title>
+<meta charset="UTF-8">
+<title>Mini Quiz 💖</title>
+
+<style>
+body{
+    background:#ffdde1;
+    font-family:Arial;
+    text-align:center;
+    padding-top:100px;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    display:inline-block;
+    box-shadow:0 0 20px rgba(0,0,0,0.15);
+}
+
+button{
+    padding:15px 25px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.yes{background:#ff4d6d;color:white;}
+.no{background:#ccc;}
+
+#sonuc{
+    font-size:28px;
+    margin-top:20px;
+    color:#ff1744;
+}
+</style>
 </head>
+
 <body>
-<h1>Site çalışıyor</h1>
+
+<div class="card">
+<h2>Mini Quiz 😌</h2>
+<p>Beni seviyor musun?</p>
+
+<button class="yes" onclick="dogru()">Evet</button>
+<button class="no" onclick="kac()">Hayır</button>
+
+<div id="sonuc"></div>
+</div>
+
+<script>
+function dogru(){
+    document.getElementById("sonuc").innerHTML = "Seni seviyorum 💖";
+}
+
+function kac(){
+    alert("Yanlış cevap 😄 tekrar dene");
+}
+</script>
+
 </body>
 </html>
