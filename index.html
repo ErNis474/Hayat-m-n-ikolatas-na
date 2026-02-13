@@ -104,6 +104,12 @@
     margin-top: 10px;
   }
 
+  .card img {
+    max-width: 100%;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+
   iframe {
     margin-top: 20px;
     border-radius: 20px;
@@ -124,7 +130,7 @@
   <div class="popupBox">
     <h2>💗 Sana küçük bir site yaptım</h2>
     <p>Hazırsan başlıyoruz.</p>
-    <button onclick="popupKapat()">Aç</button>
+    <button id="popupBtn">Aç</button>
   </div>
 </div>
 
@@ -133,6 +139,7 @@
 <div class="card">
   <b>Hayatımda verdiğim en doğru kararı 28 Ağustos’ta verdim.</b><br>
   Hikayemiz 00:48’de başladı.
+  <img src="https://via.placeholder.com/400x250.png?text=Bizim+Fotoğrafımız" alt="Bizim Fotoğrafımız">
 </div>
 
 <div class="card">
@@ -163,15 +170,12 @@
 <iframe id="spotify" src="https://open.spotify.com/embed/track/3oe4LSr7YikbCcbU6806qG" width="100%" height="80" allow="autoplay"></iframe>
 
 <script>
-  // Popup kapatma
-  function popupKapat() {
+document.addEventListener("DOMContentLoaded", function() {
+  // Popup butonunu bağla
+  const popupBtn = document.getElementById("popupBtn");
+  popupBtn.addEventListener("click", function() {
     document.getElementById("popup").style.display = "none";
-  }
-
-  // Toggle
-  function toggle(id) {
-    document.getElementById(id).classList.toggle("hidden");
-  }
+  });
 
   // Gün sayısı
   const baslangic = new Date("2025-08-28T00:48:00");
@@ -190,9 +194,14 @@
   }
   setInterval(sayac, 1000);
   sayac();
-<div class="card"> <h2>Hayatımı güzelleştiren fotoğraflardan sadece bir tanesi...</h2> <img src="görsel_2026-02-13_192545377.png" style="width:100%; border-radius:18px;"> </div>
+
+  // Toggle
+  window.toggle = function(id) {
+    document.getElementById(id).classList.toggle("hidden");
+  }
+
   // Rastgele mesaj
-  function mesaj() {
+  window.mesaj = function() {
     const m = [
       "İyi ki varsın",
       "Yanındayken huzur var",
@@ -204,8 +213,8 @@
     document.getElementById("broskiMessage").innerHTML = "Seni seviyorum broski 💖";
   }
 
-  // Kalpler efekti
-  function kalp() {
+  // Kalp efekti
+  window.kalp = function() {
     for (let i = 0; i < 25; i++) {
       const k = document.createElement("div");
       k.className = "kalp";
@@ -218,7 +227,7 @@
   }
 
   // Konfeti efekti
-  function konfeti() {
+  window.konfeti = function() {
     for (let i = 0; i < 40; i++) {
       const c = document.createElement("div");
       c.className = "confetti";
@@ -231,7 +240,7 @@
   }
 
   // Geri sayım ve gösteri + Spotify çalma
-  function baslatGosterisi() {
+  window.baslatGosterisi = function() {
     let n = 3;
     const countdownEl = document.getElementById("countdown");
     const spotify = document.getElementById("spotify");
@@ -245,7 +254,6 @@
         countdownEl.innerHTML = "💖";
         kalp();
         konfeti();
-        // Spotify autoplay: artık garanti, çünkü kullanıcı butona bastı
         spotify.src += "?autoplay=1";
       }
     }, 1000);
@@ -253,7 +261,13 @@
 
   // Arka planda sürekli kalp
   setInterval(kalp, 6000);
+
+});
 </script>
 
 </body>
 </html>
+<div class="card">
+  <h2>Biz 💞</h2>
+  <img src="görsel_2026-02-13_192545377.png" style="width:100%; border-radius:18px;">
+</div>
