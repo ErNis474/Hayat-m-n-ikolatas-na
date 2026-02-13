@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Bizim Hikayemiz</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff6fa3, #ffc2d1);
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* floating hearts */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+.container {
+  padding: 40px 20px;
+  animation: fadeIn 1.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(20px);} 
+  to {opacity:1; transform: translateY(0);} 
+}
+
+.card {
+  background: white;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+button {
+  background: #ff4d88;
+  border: none;
+  padding: 15px 22px;
+  color: white;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+#surprise {
+  display: none;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+  from {transform: scale(0.7); opacity:0;}
+  to {transform: scale(1); opacity:1;}
+}
+
+.footer {
+  margin-top: 40px;
+  opacity: 0.7;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+    <h1>❤️ Kökökököpepepepekkkk ❤️</h1>
+    <p>Hayatımda verdiğim en doğru kararı 28 ağustosta verdim..</p>
+  </div>
+
+  <div class="card">
+    <h2>📖 Hikayemiz</h2>
+    <p>
+      o gece gerçekten iyi ki senin isteğini kabul etmişim,hikayemiz tam 00:48'de başladı
+    </p>
+  </div>
+
+  
+    <p></p>
+  </div>
+
+  <div class="card">
+    <h2>⏳ Kaç Gündür Birlikteyiz?</h2>
+    <p id="counter"></p>
+  </div>
+
+  <div class="card">
+    <h2>🎁 Sürpriz</h2>
+    <button onclick="showSurprise()">Butona Bas</button>
+    <div id="surprise">köppppppppekkkkkkk</div>
+  </div>
+
+  <div class="card">
+    <h2>🎵 Şarkımız</h2>
+    <p>bu şarkı ile ilişkimiz sürekli küllerinden tekrar doğsun</p>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3oe4LSr7YikbCcbU6806qG" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </div>
+
+  <div class="card">
+<h2>⏱️ Yıldönümüne Geri Sayım</h2>
+<p id="countdown"></p>
+</div>
+
+<div class="card">
+<h2>🧠 Mini Quiz</h2>
+<p>Ne zaman tanıştık? (gün/ay sayı yaz)</p>
+<input id="q1" placeholder="cevap">
+<button onclick="checkQuiz()">Kontrol</button>
+<p id="quizResult"></p>
+</div>
+
+<div class="card">
+<h2>🔒 Gizli Mesaj</h2>
+<p>Şifre: tanışma günü (2808)</p>
+<input id="passInput" type="password">
+<button onclick="checkPass()">Aç</button>
+<div id="secretBox" style="display:none;margin-top:15px;font-weight:bold;">daha önce hiç kimsenin beni bu kadar düşünüp sevebileceğini aklımın ucundan bile geçirmezdim. Ama sen bir anda hayatıma girip o düşünceyi sikip öldürdün sevgilim.</div>
+</div>
+
+
+
+<div class="footer">
+    Senin için yapıldı ✨
+  </div>
+
+</div>
+
+<script>
+// ilişki başlangıç tarihi — BURAYI DEĞİŞTİR
+const startDate = new Date("2025-08-28");
+
+const today = new Date();
+const diffTime = today - startDate;
+const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+document.getElementById("counter").innerText = diffDays + " gündür birlikteyiz";
+
+function showSurprise() {
+  document.getElementById("surprise").style.display = "block";
+}
+// floating hearts generator
+function makeHeart() {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "💗";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.animationDuration = (4 + Math.random()*3) + "s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+}
+setInterval(makeHeart, 800);
+// anniversary countdown to next Aug 28
+function nextAnniversary() {
+  const now = new Date();
+  let year = now.getFullYear();
+  const next = new Date(year,7,28,0,48,0);
+  if (next < now) next.setFullYear(year+1);
+  return next;
+}
+function updateCountdown(){
+  const diff = nextAnniversary() - new Date();
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor(diff%86400000/3600000);
+  const m = Math.floor(diff%3600000/60000);
+  const s = Math.floor(diff%60000/1000);
+  const el = document.getElementById("countdown");
+  if(el) el.innerText = d+"g "+h+"s "+m+"d "+s+"sn kaldı";
+}
+setInterval(updateCountdown,1000);
+
+// simple quiz
+function checkQuiz(){
+  const a = document.getElementById('q1').value.toLowerCase();
+  const r = document.getElementById('quizResult');
+  if(a.includes('28')) r.innerText = 'seni seviyorum 💗';
+  else r.innerText = 'Olmadı 😄 ama yine de seviliyorsun';
+}
+
+// password reveal
+function checkPass(){
+  const v = document.getElementById('passInput').value;
+  if(v === '2808') document.getElementById('secretBox').style.display='block';
+}
+</script>
+
+</body>
+</html>
