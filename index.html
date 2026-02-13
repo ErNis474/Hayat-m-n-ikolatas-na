@@ -2,63 +2,90 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Mini Quiz 💖</title>
-
+<title>Kökökököpepepepekkkk</title>
 <style>
-body{
-    background:#ffdde1;
-    font-family:Arial;
-    text-align:center;
-    padding-top:100px;
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  text-align:center;
+  color:#222;
 }
-
-.card{
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    display:inline-block;
-    box-shadow:0 0 20px rgba(0,0,0,0.15);
+.container {
+  padding:40px 20px;
 }
-
-button{
-    padding:15px 25px;
-    margin:10px;
-    font-size:18px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
+h1 {font-size:38px;}
+.card {
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  max-width:600px;
+  margin:20px auto;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
-
-.yes{background:#ff4d6d;color:white;}
-.no{background:#ccc;}
-
-#sonuc{
-    font-size:28px;
-    margin-top:20px;
-    color:#ff1744;
+button {
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  padding:14px 22px;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+}
+button:hover {opacity:.9}
+.hidden {display:none}
+.quiz button {margin:8px}
+img {
+  width:220px;
+  border-radius:14px;
+  margin-top:15px;
 }
 </style>
 </head>
-
 <body>
 
-<div class="card">
-<h2>Mini Quiz 😌</h2>
-<p>Beni seviyor musun?</p>
+<div class="container">
+  <h1>Kökökököpepepepekkkk</h1>
 
-<button class="yes" onclick="dogru()">Evet</button>
-<button class="no" onclick="kac()">Hayır</button>
+  <div class="card">
+    <h2>Ana Mesaj</h2>
+    <p>Hayatımda verdiğim en doğru kararı 28 ağustosta verdim..</p>
+  </div>
 
-<div id="sonuc"></div>
+  <div class="card">
+    <h2>Tanışma</h2>
+    <p>o gece gerçekten iyi ki senin isteğini kabul etmişim, hikayemiz tam 00:48'de başladı</p>
+  </div>
+
+  <div class="card">
+    <h2>Mini Quiz</h2>
+    <p>Seni ne kadar seviyorum?</p>
+    <div class="quiz">
+      <button onclick="cevap()">Çok</button>
+      <button onclick="cevap()">Aşırı</button>
+      <button onclick="cevap()">Sonsuz</button>
+    </div>
+    <p id="quizSonuc"></p>
+  </div>
+
+  <div class="card">
+    <h2>Gizli Mesaj</h2>
+    <button onclick="goster()">Mesajı Aç</button>
+    <p id="gizli" class="hidden">
+    daha önce hiç kimsenin beni bu kadar düşünüp sevebileceğini aklımın ucundan bile geçirmezdim. Ama sen bir anda hayatıma girip o düşünceyi darmadağın ettin sevgilim.
+    </p>
+  </div>
+
+  
+
 </div>
 
 <script>
-function dogru(){
-    document.getElementById("sonuc").innerHTML = "Seni seviyorum 💖";
+function cevap(){
+  document.getElementById("quizSonuc").innerText = "Seni seviyorum ❤️";
 }
-
-function kac(){
-    alert("Yanlış cevap 😄 tekrar dene");
+function goster(){
+  document.getElementById("gizli").classList.remove("hidden");
 }
 </script>
 
