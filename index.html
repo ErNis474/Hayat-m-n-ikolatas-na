@@ -1,91 +1,119 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Kökökököpepepepekkkk</title>
+<title>en sevdiğim insana</title>
+
 <style>
 body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-  text-align:center;
-  color:#222;
+background: linear-gradient(135deg,#ff9ecb,#ffc0dd);
+font-family: Arial;
+text-align:center;
+padding:40px;
+color:white;
 }
-.container {
-  padding:40px 20px;
-}
-h1 {font-size:38px;}
+
 .card {
-  background:white;
-  padding:25px;
-  border-radius:16px;
-  max-width:600px;
-  margin:20px auto;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+background:white;
+color:#333;
+padding:25px;
+border-radius:20px;
+max-width:650px;
+margin:auto;
+margin-bottom:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.2);
+animation: fade 1.2s ease;
 }
+
 button {
-  background:#ff4d6d;
-  color:white;
-  border:none;
-  padding:14px 22px;
-  border-radius:10px;
-  font-size:16px;
-  cursor:pointer;
+padding:12px 20px;
+border:none;
+border-radius:12px;
+background:#ff4fa3;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
+transition:0.2s;
 }
-button:hover {opacity:.9}
-.hidden {display:none}
-.quiz button {margin:8px}
-img {
-  width:220px;
-  border-radius:14px;
-  margin-top:15px;
+
+button:hover {
+transform:scale(1.05);
+}
+
+.hidden { display:none; }
+
+@keyframes fade {
+from {opacity:0; transform:translateY(20px);}
+to {opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
+
 <body>
 
-<div class="container">
-  <h1>Kökökököpepepepekkkk</h1>
+<h1>en sevdiğim insana 💗</h1>
 
-  <div class="card">
-    <h2>Ana Mesaj</h2>
-    <p>Hayatımda verdiğim en doğru kararı 28 ağustosta verdim..</p>
-  </div>
+<div class="card">
+<p><b>Hayatımda verdiğim en doğru kararı 28 ağustosta verdim..</b></p>
+<p>
+o gece gerçekten iyi ki senin isteğini kabul etmişim,
+hikayemiz tam <b>00:48'de</b> başladı.
+</p>
+<p>
+O andan sonra günler daha renkli, saatler daha kısa,
+gülmeler daha gerçek oldu.
+</p>
+<p><b>İyi ki varsın.</b></p>
+</div>
 
-  <div class="card">
-    <h2>Tanışma</h2>
-    <p>o gece gerçekten iyi ki senin isteğini kabul etmişim, hikayemiz tam 00:48'de başladı</p>
-  </div>
+<div class="card">
+<h2>Küçük Bir Not</h2>
+<p>
+Bazen sadece varlığın bile yetiyor.
+Mesajın, sesin, gülüşün — günün en güzel kısmı oluyor.
+</p>
+</div>
 
-  <div class="card">
-    <h2>Mini Quiz</h2>
-    <p>Seni ne kadar seviyorum?</p>
-    <div class="quiz">
-      <button onclick="cevap()">Çok</button>
-      <button onclick="cevap()">Aşırı</button>
-      <button onclick="cevap()">Sonsuz</button>
-    </div>
-    <p id="quizSonuc"></p>
-  </div>
+<div class="card">
+<h2>Mini Quiz</h2>
+<p>Beni ne kadar seviyorsun?</p>
+<button onclick="quiz()">Çok</button>
+</div>
 
-  <div class="card">
-    <h2>Gizli Mesaj</h2>
-    <button onclick="goster()">Mesajı Aç</button>
-    <p id="gizli" class="hidden">
-    daha önce hiç kimsenin beni bu kadar düşünüp sevebileceğini aklımın ucundan bile geçirmezdim. Ama sen bir anda hayatıma girip o düşünceyi darmadağın ettin sevgilim.
-    </p>
-  </div>
+<div class="card">
+<h2>Sürpriz Buton</h2>
+<button onclick="surpriz()">Bas bakalım</button>
+<p id="surprizYazi"></p>
+</div>
 
-  
+<div class="card">
+<h2>Gizli Mesaj</h2>
+<button onclick="toggle()">Aç</button>
+<p id="gizli" class="hidden">
+daha önce hiç kimsenin beni bu kadar düşünüp sevebileceğini aklımın ucundan bile geçirmezdim.
+Ama sen bir anda hayatıma girip o düşünceyi sikip öldürdün sevgilim.
+</p>
+</div>
 
+<div class="card">
+<p>Bu şarkı ile ilişkimiz sürekli küllerinden tekrar doğsun</p>
+<iframe src="https://open.spotify.com/embed/track/3oe4LSr7YikbCcbU6806qG"
+width="100%" height="80"></iframe>
 </div>
 
 <script>
-function cevap(){
-  document.getElementById("quizSonuc").innerText = "Seni seviyorum ❤️";
+function quiz() {
+alert("seni seviyorum 💖");
 }
-function goster(){
-  document.getElementById("gizli").classList.remove("hidden");
+
+function surpriz() {
+document.getElementById("surprizYazi").innerText =
+"Kalbimin favori bildirimi sensin ✨";
+}
+
+function toggle() {
+document.getElementById("gizli").classList.toggle("hidden");
 }
 </script>
 
