@@ -1,106 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>en sevdiğim insana</title>
-
+<title>En Sevdiğim İnsana</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{
-background:linear-gradient(135deg,#ff9ecb,#ffc0dd);
-font-family:Arial;
-text-align:center;
-padding:40px;
-color:white;
-overflow-x:hidden;
-}
+  body {
+    background: linear-gradient(135deg, #ff9ecb, #ffc0dd);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    color: white;
+    overflow-x: hidden;
+  }
 
-h1{
-animation:pulse 2s infinite;
-}
+  h1 {
+    animation: pulse 2s infinite;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
 
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.05)}
-100%{transform:scale(1)}
-}
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
 
-.card{
-background:white;
-color:#333;
-padding:25px;
-border-radius:20px;
-max-width:680px;
-margin:auto;
-margin-bottom:22px;
-box-shadow:0 0 25px rgba(0,0,0,0.2);
-}
+  .card {
+    background: white;
+    color: #333;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 90%;
+    margin: 20px auto;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+  }
 
-button{
-padding:14px 22px;
-font-size:16px;
-border:none;
-border-radius:16px;
-cursor:pointer;
-background:#ff4d8d;
-color:white;
-margin-top:10px;
-transition:.2s;
-}
+  button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    background: #ff4d8d;
+    color: white;
+    margin-top: 10px;
+    transition: transform 0.2s;
+  }
 
-button:hover{
-transform:scale(1.08);
-}
+  button:hover {
+    transform: scale(1.08);
+  }
 
-.hidden{display:none;}
+  .hidden { display: none; }
 
-.kalp{
-position:fixed;
-top:-20px;
-font-size:22px;
-animation:fall linear forwards;
-pointer-events:none;
-}
+  .kalp, .confetti {
+    position: fixed;
+    pointer-events: none;
+    top: -20px;
+    font-size: 22px;
+    animation: fall linear forwards;
+  }
 
-@keyframes fall{
-to{transform:translateY(110vh);opacity:0;}
-}
+  .confetti {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
 
-.confetti{
-position:fixed;
-top:-10px;
-width:8px;
-height:8px;
-background:red;
-animation:fall linear forwards;
-}
+  @keyframes fall {
+    to { transform: translateY(110vh); opacity: 0; }
+  }
 
-#countdown{
-font-size:44px;
-font-weight:bold;
-color:#ff2f6d;
-}
+  #countdown {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ff2f6d;
+    margin-top: 10px;
+  }
 
-.popup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.6);
-display:flex;
-align-items:center;
-justify-content:center;
-}
+  .popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
 
-.popupBox{
-background:white;
-color:#333;
-padding:30px;
-border-radius:20px;
-max-width:420px;
-}
+  .popupBox {
+    background: white;
+    color: #333;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 90%;
+  }
+
+  #broskiMessage {
+    font-size: 1.5em;
+    color: yellow;
+    margin-top: 10px;
+  }
+
+  iframe {
+    margin-top: 20px;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 1.5em; }
+    #countdown { font-size: 2em; }
+    button { padding: 10px 16px; font-size: 14px; }
+    .card { padding: 20px; }
+  }
 </style>
 </head>
-
 <body>
 
+<!-- Popup -->
 <div id="popup" class="popup">
   <div class="popupBox">
     <h2>💗 Sana küçük bir site yaptım</h2>
@@ -109,147 +128,131 @@ max-width:420px;
   </div>
 </div>
 
-<h1>en sevdiğim insana 💗</h1>
+<h1>En Sevdiğim İnsana 💗</h1>
 
 <div class="card">
-<b>Hayatımda verdiğim en doğru kararı 28 Ağustos’ta verdim.</b><br>
-Hikayemiz 00:48’de başladı.
+  <b>Hayatımda verdiğim en doğru kararı 28 Ağustos’ta verdim.</b><br>
+  Hikayemiz 00:48’de başladı.
 </div>
 
 <div class="card">
-<h2>Biz 🩷</h2>
-<p id="gunSayisi"></p>
-<p id="sayac"></p>
+  <h2>Biz 🩷</h2>
+  <p id="gunSayisi"></p>
+  <p id="sayac"></p>
 </div>
 
 <div class="card">
-<h2>Sürpriz 🎁</h2>
-<button onclick="toggle('surpriz')">Aç</button>
-<p id="surpriz" class="hidden">
-İyi ki hayatımdasın.
-</p>
-</div>
-<div class="card"> <h2>Biz 💞</h2> <img src="görsel_2026-02-13_192545377.png" style="width:100%; border-radius:18px;"> </div>
-<div class="card">
-<h2>Mini Quiz 😄</h2>
-<input id="quiz">
-<button onclick="quiz()">Gönder</button>
-<p id="quizSonuc"></p>
+  <h2>Sürpriz 🎁</h2>
+  <button onclick="toggle('surpriz')">Aç</button>
+  <p id="surpriz" class="hidden">İyi ki hayatımdasın.</p>
 </div>
 
 <div class="card">
-<h2>Rastgele Mesaj 🎲</h2>
-<button onclick="mesaj()">Mesaj ver</button>
-<p id="mesaj"></p>
+  <h2>Rastgele Mesaj 🎲</h2>
+  <button onclick="mesaj()">Mesaj ver</button>
+  <p id="mesaj"></p>
+  <p id="broskiMessage"></p>
 </div>
 
 <div class="card">
-<h2>Gösteri Butonu ❤️</h2>
-<button onclick="geriSay()">Başlat</button>
-<div id="countdown"></div>
+  <h2>Gösteri Butonu ❤️</h2>
+  <button onclick="baslatGosterisi()">Başlat</button>
+  <div id="countdown"></div>
 </div>
 
-<iframe id="spotify"
-src="https://open.spotify.com/embed/track/3oe4LSr7YikbCcbU6806qG"
-width="100%" height="80" allow="autoplay"></iframe>
+<iframe id="spotify" src="https://open.spotify.com/embed/track/3oe4LSr7YikbCcbU6806qG" width="100%" height="80" allow="autoplay"></iframe>
 
 <script>
+  // Popup kapatma
+  function popupKapat() {
+    document.getElementById("popup").style.display = "none";
+  }
 
-/* popup */
-function popupKapat(){
-document.getElementById("popup").style.display="none";
-}
+  // Toggle
+  function toggle(id) {
+    document.getElementById(id).classList.toggle("hidden");
+  }
 
-/* toggle */
-function toggle(id){
-document.getElementById(id).classList.toggle("hidden");
-}
+  // Gün sayısı
+  const baslangic = new Date("2025-08-28T00:48:00");
+  const gunSayisiEl = document.getElementById("gunSayisi");
+  const gun = Math.floor((Date.now() - baslangic) / 86400000);
+  gunSayisiEl.innerHTML = `${gun} gündür birlikteyiz ❤️`;
 
-/* gün sayısı */
-const bas=new Date("2025-08-28T00:48:00");
-const gun=Math.floor((Date.now()-bas)/(86400000));
-gunSayisi.innerHTML=gun+" gündür birlikteyiz ❤️";
+  // Yıldönümü geri sayımı
+  const sayacEl = document.getElementById("sayac");
+  function sayac() {
+    const now = new Date();
+    let yilD = new Date(now.getFullYear(), 7, 28);
+    if (now > yilD) yilD.setFullYear(yilD.getFullYear() + 1);
+    const fark = yilD - now;
+    sayacEl.innerHTML = `${Math.floor(fark/86400000)}g ${Math.floor(fark/3600000%24)}s ${Math.floor(fark/60000%60)}d ${Math.floor(fark/1000%60)}sn`;
+  }
+  setInterval(sayac, 1000);
+  sayac();
+<div class="card"> <h2>Hayatımı güzelleştiren fotoğraflardan sadece bir tanesi...</h2> <img src="görsel_2026-02-13_192545377.png" style="width:100%; border-radius:18px;"> </div>
+  // Rastgele mesaj
+  function mesaj() {
+    const m = [
+      "İyi ki varsın",
+      "Yanındayken huzur var",
+      "Gülüşün yeter",
+      "En sevdiğim kişi sensin",
+      "Kalbim senden yana"
+    ];
+    document.getElementById("mesaj").innerHTML = m[Math.floor(Math.random() * m.length)];
+    document.getElementById("broskiMessage").innerHTML = "Seni seviyorum broski 💖";
+  }
 
-/* yıldönümü */
-function sayac(){
-let now=new Date();
-let h=new Date(now.getFullYear(),7,28);
-if(now>h) h.setFullYear(h.getFullYear()+1);
-let f=h-now;
-sayac.innerHTML=
-Math.floor(f/86400000)+"g "+
-Math.floor(f/3600000%24)+"s "+
-Math.floor(f/60000%60)+"d "+
-Math.floor(f/1000%60)+"sn";
-}
-setInterval(sayac,1000); sayac();
+  // Kalpler efekti
+  function kalp() {
+    for (let i = 0; i < 25; i++) {
+      const k = document.createElement("div");
+      k.className = "kalp";
+      k.innerHTML = "💗";
+      k.style.left = Math.random() * 100 + "vw";
+      k.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(k);
+      setTimeout(() => k.remove(), 5000);
+    }
+  }
 
-/* quiz */
-function quiz(){
-quizSonuc.innerHTML=
-quiz.value.toLowerCase().includes("sen")
-? "seni seviyorum ❤️"
-: "tekrar dene 😄";
-}
+  // Konfeti efekti
+  function konfeti() {
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement("div");
+      c.className = "confetti";
+      c.style.left = Math.random() * 100 + "vw";
+      c.style.background = `hsl(${Math.random()*360}, 80%, 60%)`;
+      c.style.animationDuration = (2 + Math.random()*3) + "s";
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 5000);
+    }
+  }
 
-/* mesaj */
-function mesaj(){
-const m=[
-"İyi ki varsın",
-"Yanındayken huzur var",
-"Gülüşün yeter",
-"En sevdiğim kişi sensin",
-"Kalbim senden yana"
-];
-mesaj.innerHTML=m[Math.random()*m.length|0];
-}
+  // Geri sayım ve gösteri + Spotify çalma
+  function baslatGosterisi() {
+    let n = 3;
+    const countdownEl = document.getElementById("countdown");
+    const spotify = document.getElementById("spotify");
+    countdownEl.innerHTML = n;
 
-/* kalpler */
-function kalp(){
-for(let i=0;i<40;i++){
-let k=document.createElement("div");
-k.className="kalp";
-k.innerHTML="💗";
-k.style.left=Math.random()*100+"vw";
-k.style.animationDuration=(2+Math.random()*3)+"s";
-document.body.appendChild(k);
-setTimeout(()=>k.remove(),5000);
-}
-}
+    const interval = setInterval(() => {
+      n--;
+      if (n > 0) countdownEl.innerHTML = n;
+      else {
+        clearInterval(interval);
+        countdownEl.innerHTML = "💖";
+        kalp();
+        konfeti();
+        // Spotify autoplay: artık garanti, çünkü kullanıcı butona bastı
+        spotify.src += "?autoplay=1";
+      }
+    }, 1000);
+  }
 
-/* konfeti */
-function konfeti(){
-for(let i=0;i<60;i++){
-let c=document.createElement("div");
-c.className="confetti";
-c.style.left=Math.random()*100+"vw";
-c.style.background=`hsl(${Math.random()*360},80%,60%)`;
-c.style.animationDuration=(2+Math.random()*3)+"s";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),5000);
-}
-}
-
-/* geri sayım + efekt */
-function geriSay(){
-let n=3;
-countdown.innerHTML=n;
-let i=setInterval(()=>{
-n--;
-if(n>0) countdown.innerHTML=n;
-else{
-clearInterval(i);
-countdown.innerHTML="💖";
-kalp();
-konfeti();
-spotify.src += "?autoplay=1";
-}
-},1000);
-}
-
-/* arka plan sürekli kalp */
-setInterval(kalp,6000);
-
+  // Arka planda sürekli kalp
+  setInterval(kalp, 6000);
 </script>
 
 </body>
