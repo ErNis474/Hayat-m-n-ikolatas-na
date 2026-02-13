@@ -5,116 +5,251 @@
 <title>en sevdiğim insana</title>
 
 <style>
-body {
-background: linear-gradient(135deg,#ff9ecb,#ffc0dd);
-font-family: Arial;
+body{
+background:linear-gradient(135deg,#ff9ecb,#ffc0dd);
+font-family:Arial;
 text-align:center;
 padding:40px;
 color:white;
+overflow-x:hidden;
 }
 
-.card {
+h1{
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
+}
+
+.card{
 background:white;
 color:#333;
 padding:25px;
 border-radius:20px;
-max-width:650px;
+max-width:680px;
 margin:auto;
-margin-bottom:20px;
-box-shadow:0 0 20px rgba(0,0,0,0.2);
-animation: fade 1.2s ease;
+margin-bottom:22px;
+box-shadow:0 0 25px rgba(0,0,0,0.2);
 }
 
-button {
-padding:12px 20px;
-border:none;
-border-radius:12px;
-background:#ff4fa3;
-color:white;
+button{
+padding:14px 22px;
 font-size:16px;
+border:none;
+border-radius:16px;
 cursor:pointer;
+background:#ff4d8d;
+color:white;
 margin-top:10px;
-transition:0.2s;
+transition:.2s;
 }
 
-button:hover {
-transform:scale(1.05);
+button:hover{
+transform:scale(1.08);
 }
 
-.hidden { display:none; }
+.hidden{display:none;}
 
-@keyframes fade {
-from {opacity:0; transform:translateY(20px);}
-to {opacity:1; transform:translateY(0);}
+.kalp{
+position:fixed;
+top:-20px;
+font-size:22px;
+animation:fall linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh);opacity:0;}
+}
+
+.confetti{
+position:fixed;
+top:-10px;
+width:8px;
+height:8px;
+background:red;
+animation:fall linear forwards;
+}
+
+#countdown{
+font-size:44px;
+font-weight:bold;
+color:#ff2f6d;
+}
+
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.popupBox{
+background:white;
+color:#333;
+padding:30px;
+border-radius:20px;
+max-width:420px;
 }
 </style>
 </head>
 
 <body>
 
+<div id="popup" class="popup">
+  <div class="popupBox">
+    <h2>💗 Sana küçük bir site yaptım</h2>
+    <p>Hazırsan başlıyoruz.</p>
+    <button onclick="popupKapat()">Aç</button>
+  </div>
+</div>
+
 <h1>en sevdiğim insana 💗</h1>
 
 <div class="card">
-<p><b>Hayatımda verdiğim en doğru kararı 28 ağustosta verdim..</b></p>
-<p>
-o gece gerçekten iyi ki senin isteğini kabul etmişim,
-hikayemiz tam <b>00:48'de</b> başladı.
-</p>
-<p>
-O andan sonra günler daha renkli, saatler daha kısa,
-gülmeler daha gerçek oldu.
-</p>
-<p><b>İyi ki varsın.</b></p>
+<b>Hayatımda verdiğim en doğru kararı 28 Ağustos’ta verdim.</b><br>
+Hikayemiz 00:48’de başladı.
 </div>
 
 <div class="card">
-<h2>Küçük Bir Not</h2>
-<p>
-Bazen sadece varlığın bile yetiyor.
-Mesajın, sesin, gülüşün — günün en güzel kısmı oluyor.
+<h2>Biz 🩷</h2>
+<p id="gunSayisi"></p>
+<p id="sayac"></p>
+</div>
+
+<div class="card">
+<h2>Sürpriz 🎁</h2>
+<button onclick="toggle('surpriz')">Aç</button>
+<p id="surpriz" class="hidden">
+İyi ki hayatımdasın.
 </p>
 </div>
-
+<div class="card"> <h2>Biz 💞</h2> <img src="görsel_2026-02-13_192545377.png" style="width:100%; border-radius:18px;"> </div>
 <div class="card">
-<h2>Mini Quiz</h2>
-<p>Beni ne kadar seviyorsun?</p>
-<button onclick="quiz()">Çok</button>
+<h2>Mini Quiz 😄</h2>
+<input id="quiz">
+<button onclick="quiz()">Gönder</button>
+<p id="quizSonuc"></p>
 </div>
 
 <div class="card">
-<h2>Sürpriz Buton</h2>
-<button onclick="surpriz()">Bas bakalım</button>
-<p id="surprizYazi"></p>
+<h2>Rastgele Mesaj 🎲</h2>
+<button onclick="mesaj()">Mesaj ver</button>
+<p id="mesaj"></p>
 </div>
 
 <div class="card">
-<h2>Gizli Mesaj</h2>
-<button onclick="toggle()">Aç</button>
-<p id="gizli" class="hidden">
-daha önce hiç kimsenin beni bu kadar düşünüp sevebileceğini aklımın ucundan bile geçirmezdim.
-Ama sen bir anda hayatıma girip o düşünceyi sikip öldürdün sevgilim.
-</p>
+<h2>Gösteri Butonu ❤️</h2>
+<button onclick="geriSay()">Başlat</button>
+<div id="countdown"></div>
 </div>
 
-<div class="card">
-<p>Bu şarkı ile ilişkimiz sürekli küllerinden tekrar doğsun</p>
-<iframe src="https://open.spotify.com/embed/track/3oe4LSr7YikbCcbU6806qG"
-width="100%" height="80"></iframe>
-</div>
+<iframe id="spotify"
+src="https://open.spotify.com/embed/track/3oe4LSr7YikbCcbU6806qG"
+width="100%" height="80" allow="autoplay"></iframe>
 
 <script>
-function quiz() {
-alert("seni seviyorum 💖");
+
+/* popup */
+function popupKapat(){
+document.getElementById("popup").style.display="none";
 }
 
-function surpriz() {
-document.getElementById("surprizYazi").innerText =
-"Kalbimin favori bildirimi sensin ✨";
+/* toggle */
+function toggle(id){
+document.getElementById(id).classList.toggle("hidden");
 }
 
-function toggle() {
-document.getElementById("gizli").classList.toggle("hidden");
+/* gün sayısı */
+const bas=new Date("2025-08-28T00:48:00");
+const gun=Math.floor((Date.now()-bas)/(86400000));
+gunSayisi.innerHTML=gun+" gündür birlikteyiz ❤️";
+
+/* yıldönümü */
+function sayac(){
+let now=new Date();
+let h=new Date(now.getFullYear(),7,28);
+if(now>h) h.setFullYear(h.getFullYear()+1);
+let f=h-now;
+sayac.innerHTML=
+Math.floor(f/86400000)+"g "+
+Math.floor(f/3600000%24)+"s "+
+Math.floor(f/60000%60)+"d "+
+Math.floor(f/1000%60)+"sn";
 }
+setInterval(sayac,1000); sayac();
+
+/* quiz */
+function quiz(){
+quizSonuc.innerHTML=
+quiz.value.toLowerCase().includes("sen")
+? "seni seviyorum ❤️"
+: "tekrar dene 😄";
+}
+
+/* mesaj */
+function mesaj(){
+const m=[
+"İyi ki varsın",
+"Yanındayken huzur var",
+"Gülüşün yeter",
+"En sevdiğim kişi sensin",
+"Kalbim senden yana"
+];
+mesaj.innerHTML=m[Math.random()*m.length|0];
+}
+
+/* kalpler */
+function kalp(){
+for(let i=0;i<40;i++){
+let k=document.createElement("div");
+k.className="kalp";
+k.innerHTML="💗";
+k.style.left=Math.random()*100+"vw";
+k.style.animationDuration=(2+Math.random()*3)+"s";
+document.body.appendChild(k);
+setTimeout(()=>k.remove(),5000);
+}
+}
+
+/* konfeti */
+function konfeti(){
+for(let i=0;i<60;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background=`hsl(${Math.random()*360},80%,60%)`;
+c.style.animationDuration=(2+Math.random()*3)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),5000);
+}
+}
+
+/* geri sayım + efekt */
+function geriSay(){
+let n=3;
+countdown.innerHTML=n;
+let i=setInterval(()=>{
+n--;
+if(n>0) countdown.innerHTML=n;
+else{
+clearInterval(i);
+countdown.innerHTML="💖";
+kalp();
+konfeti();
+spotify.src += "?autoplay=1";
+}
+},1000);
+}
+
+/* arka plan sürekli kalp */
+setInterval(kalp,6000);
+
 </script>
 
 </body>
