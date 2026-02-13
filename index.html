@@ -5,122 +5,85 @@
 <title>En Sevdiğim İnsana</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body {
-    background: linear-gradient(135deg, #ff9ecb, #ffc0dd);
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-    margin: 0;
-    color: white;
-    overflow-x: hidden;
-  }
-
-  h1 {
-    animation: pulse 2s infinite;
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-
-  .card {
-    background: white;
-    color: #333;
-    padding: 25px;
-    border-radius: 20px;
-    max-width: 90%;
-    margin: 20px auto;
-    box-shadow: 0 0 25px rgba(0,0,0,0.2);
-  }
-
-  button {
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    background: #ff4d8d;
-    color: white;
-    margin-top: 10px;
-    transition: transform 0.2s;
-  }
-
-  button:hover {
-    transform: scale(1.08);
-  }
-
-  .hidden { display: none; }
-
-  .kalp, .confetti {
-    position: fixed;
-    pointer-events: none;
-    top: -20px;
-    font-size: 22px;
-    animation: fall linear forwards;
-  }
-
-  .confetti {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-
-  @keyframes fall {
-    to { transform: translateY(110vh); opacity: 0; }
-  }
-
-  #countdown {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #ff2f6d;
-    margin-top: 10px;
-  }
-
-  .popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-
-  .popupBox {
-    background: white;
-    color: #333;
-    padding: 30px;
-    border-radius: 20px;
-    max-width: 90%;
-  }
-
-  #broskiMessage {
-    font-size: 1.5em;
-    color: yellow;
-    margin-top: 10px;
-  }
-
-  .card img {
-    max-width: 100%;
-    border-radius: 20px;
-    margin-top: 10px;
-  }
-
-  iframe {
-    margin-top: 20px;
-    border-radius: 20px;
-  }
-
-  @media (max-width: 480px) {
-    h1 { font-size: 1.5em; }
-    #countdown { font-size: 2em; }
-    button { padding: 10px 16px; font-size: 14px; }
-    .card { padding: 20px; }
-  }
+body {
+  background: linear-gradient(135deg, #ff9ecb, #ffc0dd);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  color: white;
+  overflow-x: hidden;
+}
+h1 {
+  animation: pulse 2s infinite;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.card {
+  background: white;
+  color: #333;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 90%;
+  margin: 20px auto;
+  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+}
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: #ff4d8d;
+  color: white;
+  margin-top: 10px;
+  transition: transform 0.2s;
+}
+button:hover { transform: scale(1.08); }
+.hidden { display: none; }
+.kalp, .confetti {
+  position: fixed;
+  pointer-events: none;
+  top: -20px;
+  font-size: 22px;
+  animation: fall linear forwards;
+}
+.confetti { width: 8px; height: 8px; border-radius: 50%; }
+@keyframes fall { to { transform: translateY(110vh); opacity: 0; } }
+#countdown { font-size: 2.5em; font-weight: bold; color: #ff2f6d; margin-top: 10px; }
+.popup {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.popupBox {
+  background: white;
+  color: #333;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 90%;
+}
+#broskiMessage {
+  font-size: 1.5em;
+  color: yellow;
+  margin-top: 10px;
+}
+.card img { max-width: 100%; border-radius: 20px; margin-top: 10px; }
+iframe { margin-top: 20px; border-radius: 20px; }
+@media (max-width: 480px) {
+  h1 { font-size: 1.5em; }
+  #countdown { font-size: 2em; }
+  button { padding: 10px 16px; font-size: 14px; }
+  .card { padding: 20px; }
+}
 </style>
 </head>
 <body>
@@ -139,7 +102,12 @@
 <div class="card">
   <b>Hayatımda verdiğim en doğru kararı 28 Ağustos’ta verdim.</b><br>
   Hikayemiz 00:48’de başladı.
-  <img src="https://via.placeholder.com/400x250.png?text=Bizim+Fotoğrafımız" alt="Bizim Fotoğrafımız">
+</div>
+
+<!-- Biz fotoğraf kartı -->
+<div class="card">
+  <h2>Biz 💞</h2>
+  <img src="görsel_2026-02-13_192545377.png" style="width:100%; border-radius:18px;">
 </div>
 
 <div class="card">
@@ -171,7 +139,6 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Popup butonunu bağla
   const popupBtn = document.getElementById("popupBtn");
   popupBtn.addEventListener("click", function() {
     document.getElementById("popup").style.display = "none";
@@ -202,13 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Rastgele mesaj
   window.mesaj = function() {
-    const m = [
-      "İyi ki varsın",
-      "Yanındayken huzur var",
-      "Gülüşün yeter",
-      "En sevdiğim kişi sensin",
-      "Kalbim senden yana"
-    ];
+    const m = ["İyi ki varsın", "Yanındayken huzur var", "Gülüşün yeter", "En sevdiğim kişi sensin", "Kalbim senden yana"];
     document.getElementById("mesaj").innerHTML = m[Math.floor(Math.random() * m.length)];
     document.getElementById("broskiMessage").innerHTML = "Seni seviyorum broski 💖";
   }
@@ -245,7 +206,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const countdownEl = document.getElementById("countdown");
     const spotify = document.getElementById("spotify");
     countdownEl.innerHTML = n;
-
     const interval = setInterval(() => {
       n--;
       if (n > 0) countdownEl.innerHTML = n;
@@ -261,13 +221,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Arka planda sürekli kalp
   setInterval(kalp, 6000);
-
 });
 </script>
 
 </body>
 </html>
-<div class="card">
-  <h2>Biz 💞</h2>
-  <img src="görsel_2026-02-13_192545377.png" style="width:100%; border-radius:18px;">
-</div>
+
